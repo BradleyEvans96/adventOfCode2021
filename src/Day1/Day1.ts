@@ -14,7 +14,6 @@ export default {
                 increaseCount ++;
             }
         }
-        // console.log(increaseCount);
 
         return String(increaseCount)
     },

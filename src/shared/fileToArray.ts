@@ -6,5 +6,9 @@ export function readFile(fileName: string): string[] {
 }
 
 export function readFileForDay(dayNumber: number): string[] {
-    return readFile(`data/day${dayNumber}.txt`)
+    return readFile(`data/day${dayNumber}/test.txt`)
+}
+
+export function readTestFileForDay(dayNumber: number): string [] {
+    return readFile(`data/day${dayNumber}/example.txt`)
 }
