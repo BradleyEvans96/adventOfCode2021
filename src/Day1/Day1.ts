@@ -1,15 +1,24 @@
-import {readFile} from '../fileToArray';
+import { Day } from '../shared/day';
 
-const testobj = readFile('testData.txt');
-let increaseCount = 0;
+export default {
+    solvePartOne: (input: string[]): string => {
 
-for (let i = 1; i < testobj.length; i++)
-{
-    console.log(testobj[i])
-    let j = i -1;
-    if (testobj[i]>testobj[j])
-    {
-        increaseCount ++;
+        let increaseCount = 0;
+
+        for (let i = 1; i < input.length; i++)
+        {
+            // console.log(input[i])
+            let j = i -1;
+            if (input[i] > input[j])
+            {
+                increaseCount ++;
+            }
+        }
+
+        return String(increaseCount)
+    },
+    solvePartTwo: (input: string[]): string => {
+        // Write code here
+        return ''
     }
-}
-console.log(increaseCount);
+} as Day
