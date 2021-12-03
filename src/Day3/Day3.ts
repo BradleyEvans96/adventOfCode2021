@@ -1,4 +1,3 @@
-import { parse } from 'path/posix';
 import { Day } from '../shared/day';
 
 function getMostFrequent(arr:string[]):string {
@@ -8,7 +7,46 @@ function getMostFrequent(arr:string[]):string {
   },{})
  return Object.keys(hashmap).reduce((a, b) => hashmap[a] > hashmap[b] ? a : b)
  }
+function findRating(input : any[],isMostCommon:boolean): number {
+        let arrayToFilter = input;
+        let ratingFound = false;
+        let bitPosition = 0;
+        while (!ratingFound)
+        {
+            const transposedArray = arrayToFilter[0].map((_:any, colIndex:number) => arrayToFilter.map(row => row[colIndex]));
+            const mostFrequentValue = getMostFrequent(transposedArray[bitPosition])
+            if (isMostCommon)
+            {
+                arrayToFilter = arrayToFilter.filter(function(arrayToFilter){
+                    return arrayToFilter[bitPosition]==mostFrequentValue;
+                })
+            }
+            else
+            {
+                arrayToFilter = arrayToFilter.filter(function(arrayToFilter){
+                    return arrayToFilter[bitPosition]!=mostFrequentValue;
+                })
+            }
+            
+            if(arrayToFilter.length==1 ||bitPosition>=transposedArray.length)
+            {
+                ratingFound=true;
+            }
+            bitPosition +=1;
+        }
+    return parseInt(arrayToFilter[0].join(""),2);
+}
 
+function getOxygenGeneratorRating(input: any):number
+{
+    console.log("Oxygen Rating: " + findRating(input,true));
+    return findRating(input,true);
+}
+
+function getCO2ScrubberRating(input:any):number{
+    console.log("Co2 Rating: " + findRating(input,false));
+    return findRating(input,false);
+}
 export default {
     solvePartOne: (input: string[]): string => {
         let splittedArray = [];
@@ -40,6 +78,12 @@ export default {
         return String(powerConsumption);
     },
     solvePartTwo: (input: string[]): string => {
-        return ''
+        let splittedArray = [];
+        for (let i = 0 ; i < input.length ; i++)
+        {
+            splittedArray.push(input[i].split(""));
+        }
+        const lifeSupportRating = getOxygenGeneratorRating(splittedArray) * getCO2ScrubberRating(splittedArray);
+        return String(lifeSupportRating);
     }
 } as Day
