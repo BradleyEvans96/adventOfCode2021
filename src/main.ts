@@ -1,7 +1,7 @@
 import { readFileForDay, readTestFileForDay } from "./shared/fileToArray";
 
 // The day to run
-const dayNumber = 1
+const dayNumber = 3
 
 // Run the code
 solveForDay(dayNumber)
