@@ -1,7 +1,7 @@
 import { readFileForDay, readTestFileForDay } from "./shared/fileToArray";
 
 // The day to run
-const dayNumber = 3
+const dayNumber = 4
 
 // Run the code
 solveForDay(dayNumber)
@@ -21,15 +21,15 @@ async function solveForDay(dayNumber: number): Promise<void> {
   // Dynamically import the day from the file. This assumes the file and folder are named correctly. And the file exports a default Day
   const { default: day } = await import(`./day${dayNumber}/Day${dayNumber}`)
 
-  // const partOneExampleAnswer = day.solvePartOne(testinput)
-  // console.log(`Part 1 Example: ${partOneExampleAnswer}`)
+  const partOneExampleAnswer = day.solvePartOne(testinput)
+  console.log(`Part 1 Example: ${partOneExampleAnswer}`)
 
-  // const partOneAnswer = day.solvePartOne(input)
-  // console.log(`Part 1 Actual: ${partOneAnswer}`)
+  const partOneAnswer = day.solvePartOne(input)
+  console.log(`Part 1 Actual: ${partOneAnswer}`)
 
-  const partTwoExampleAnswer = day.solvePartTwo(testinput)
-  console.log(`Part 2 Example: ${partTwoExampleAnswer}`)
+  // const partTwoExampleAnswer = day.solvePartTwo(testinput)
+  // console.log(`Part 2 Example: ${partTwoExampleAnswer}`)
 
-  const partTwoAnswer = day.solvePartTwo(input)
-  console.log(`Part 2 Actual: ${partTwoAnswer}`)
+  // const partTwoAnswer = day.solvePartTwo(input)
+  // console.log(`Part 2 Actual: ${partTwoAnswer}`)
 }
