@@ -38,6 +38,8 @@ interface winningBoard {
 function findWinningBoard(input: string[]): winningBoard {
     const bingoCalls = convertBingoCalls(input[0]);
     const allBingoBoards = collectAllBingoBoards(input);
+    const copyBingoBoards = collectAllBingoBoards(input);
+
     let winningBoard:number[][] = [];
         for(let i:number = 0; i < bingoCalls.length;i++)
     {
