@@ -10,41 +10,104 @@ const convertDataIntoInstructions = (input: string[]) => {
 };
 
 const converStartingBoardToObject = (board: string[]) => {
-  const splitBoard = board.map((row) => row.split(" "));
-  const lanes = splitBoard[splitBoard.length - 1]
+  console.log("starting board - ", board);
+  // Board is in the form of letter being in the 2,6,10,14th position -> 4n-2
+  const lanes = board[board.length - 1]
+    .split(" ")
     .filter((item) => item !== " ")
     .map((item) => Number(item));
+  console.log("lanes - ", lanes);
   const numberOfLanes = Math.max(...lanes);
-  const rows = splitBoard
-    .slice(0, -1)
-    .map((row) => createGroups(row, numberOfLanes))
-    .reverse();
+  console.log("number of lanes - ", numberOfLanes);
+
   let crateArrangement = {};
-  // Create Container lanes
   for (let index = 0; index < numberOfLanes; index++) {
     crateArrangement[`lane${index}`] = [];
   }
-  rows.forEach((row) => {
-    row.forEach((line) => {
-      line.forEach((item, index) => {
-        if (item !== "") {
-          crateArrangement[`lane${index}`].push(item);
-        }
-      });
+
+  const rows = board.slice(0, -1);
+  for (let index = 0; index < numberOfLanes; index++) {
+    rows.forEach((r) => {
+      const crate = r.charAt(4 * (index + 1) - 3);
+      if (crate !== " ") {
+        crateArrangement[`lane${index}`].push(r.charAt(4 * (index + 1) - 3));
+      }
     });
+  }
+
+  for (let index = 0; index < numberOfLanes; index++) {
+    crateArrangement[`lane${index}`].reverse();
+  }
+  return crateArrangement;
+};
+
+type Instruction = {
+  move: number;
+  from: number;
+  to: number;
+};
+
+const convertInstructions = (instructions: string[]): Instruction[] => {
+  return instructions.map((i) => {
+    const splitString = i.split(" ");
+    return {
+      move: Number(splitString[1]),
+      from: Number(splitString[3]),
+      to: Number(splitString[5]),
+    };
   });
 };
 
-const convertInstructions = () => {};
+const handleMovement = (instruction: Instruction, crateArrangement: object) => {
+  const fromCrate = crateArrangement[`lane${instruction.from - 1}`];
+  const toCrate = crateArrangement[`lane${instruction.to - 1}`];
+  const cratesToMove =
+    fromCrate.length > instruction.move
+      ? fromCrate.slice(-instruction.move)
+      : fromCrate;
+  const newFrom =
+    fromCrate.length > instruction.move
+      ? fromCrate.slice(0, -instruction.move)
+      : [];
+  cratesToMove.reverse().forEach((c) => {
+    toCrate.push(c);
+  });
+  const newBoard = crateArrangement;
+  newBoard[`lane${instruction.from - 1}`] = newFrom;
+  newBoard[`lane${instruction.to - 1}`] = toCrate;
+  return newBoard;
+};
+
+const handleMovements = (
+  instructions: Instruction[],
+  initialArrangemenet: object
+) => {
+  let board = initialArrangemenet;
+  instructions.forEach((i) => {
+    const newBoard = handleMovement(i, board);
+    board = newBoard;
+  });
+  return board;
+};
+
+const getTopOfStacks = (arrangement: object) => {
+  const message = Object.values(arrangement)
+    .flatMap((i: string[]) => i.slice(-1))
+    .join("");
+  return message;
+};
 
 const determineCratesOnTop = (input: string[]) => {
-  console.log("data - ", convertDataIntoInstructions(input));
-  const { startingBoard } = convertDataIntoInstructions(input);
+  const { startingBoard, instructions } = convertDataIntoInstructions(input);
   const mappedBoard = converStartingBoardToObject(startingBoard);
-  // Convert instructions
-  // Handle movement
-  // remember crates are in reverse order when placed down
-  return "";
+  console.log("mappedBoard - ", mappedBoard);
+  const convertedInstructions = convertInstructions(instructions);
+  const boardAfterMovements = handleMovements(
+    convertedInstructions,
+    mappedBoard
+  );
+  console.log("------", boardAfterMovements);
+  return String(getTopOfStacks(boardAfterMovements));
 };
 
 export default {
