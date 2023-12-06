@@ -1,8 +1,6 @@
+import { dayNumber, yearNumber } from "./shared/constants";
 import { readFileForDay, readTestFileForDay } from "./shared/fileToArray";
 
-// The day to run
-export const dayNumber = 6;
-export const yearNumber = 2023;
 // Run the code
 solveForDay(dayNumber);
 
