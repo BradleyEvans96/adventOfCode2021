@@ -1,4 +1,7 @@
-import { sumArrayOfNumbers } from "../../2022/Day1/Day1";
+import {
+  multiplyArrayOfNumbers,
+  sumArrayOfNumbers,
+} from "../../helpers/reducers";
 import { Day } from "../../shared/day";
 
 type Colour = string;
@@ -10,11 +13,6 @@ type GameInfo = {
   gameNumber: number;
   sets: Cubes[];
 };
-
-export const multiplyArrayOfNumbers = (
-  accumulator: number,
-  currentValue: number
-) => accumulator * currentValue;
 
 export const getGameInfoFromLine = (game: string): GameInfo => {
   const gameDetails = game.split(":");

@@ -1,6 +1,5 @@
+import { multiplyArrayOfNumbers } from "../../helpers/reducers";
 import { Day } from "../../shared/day";
-import { multiplyArrayOfNumbers } from "../Day2/Day2";
-
 const getTimeAndDistanceOfRaces = (input: string[]) => {
   const raceTimes = input[0]
     .split(":")[1]

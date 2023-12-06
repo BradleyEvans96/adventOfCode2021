@@ -3,7 +3,7 @@ dotenv.config();
 
 export const getPuzzleInput = async (yearNumber: number, dayNumber: number) => {
   const myHeaders = new Headers();
-  myHeaders.append("Cookie", process.env.AOC_SESSION_COOKIE);
+  myHeaders.append("Cookie", `session=${process.env.AOC_SESSION_COOKIE}`);
 
   try {
     const data = await fetch(

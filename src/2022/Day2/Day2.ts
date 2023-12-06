@@ -1,5 +1,5 @@
+import { sumArrayOfNumbers } from "../../helpers/reducers";
 import { Day } from "../../shared/day";
-import { sumArrayOfNumbers } from "../Day1/Day1";
 
 const points = {
   loss: 0,

@@ -1,11 +1,15 @@
 import { Day } from "../../shared/day";
 
-const printResult = (array: string[]) => {
-  console.log("printing out console");
-  return "mock answer";
+export const solvePartOne = (input: string[]) => {
+  console.log("input - ", input);
+  return "";
+};
+
+export const solvePartTwo = (input: string[]) => {
+  return "";
 };
 
 export default {
-  solvePartOne: (input: string[]): string => printResult(input),
-  solvePartTwo: (input: string[]): string => printResult(input),
+  solvePartOne: (input: string[]): string => String(solvePartOne(input)),
+  solvePartTwo: (input: string[]): string => String(solvePartTwo(input)),
 } as Day;

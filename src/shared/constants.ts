@@ -1,5 +1,5 @@
-export const dayNumber = 5;
-export const yearNumber = 2022;
+export const dayNumber = 1;
+export const yearNumber = 2023;
 
 export const typescriptTemplate = `
  import { Day } from "../../shared/day";

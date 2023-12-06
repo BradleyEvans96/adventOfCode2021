@@ -1,13 +1,10 @@
-import { sumArrayOfNumbers } from "../../2022/Day1/Day1";
+import { getIntersectionOfTwoArrays } from "../../helpers";
+import { sumArrayOfNumbers } from "../../helpers/reducers";
 import { Day } from "../../shared/day";
 
 type CardDetails = {
   winningNumbers: number[];
   cardNumbers: number[];
-};
-
-export const getIntersectionOfTwoArrays = (array1: any[], array2: any[]) => {
-  return array1.filter((value) => array2.includes(value));
 };
 
 const getCardDetailsFromString = (input: string): CardDetails => {

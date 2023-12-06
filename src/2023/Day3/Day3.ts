@@ -1,6 +1,8 @@
-import { sumArrayOfNumbers } from "../../2022/Day1/Day1";
+import {
+  multiplyArrayOfNumbers,
+  sumArrayOfNumbers,
+} from "../../helpers/reducers";
 import { Day } from "../../shared/day";
-import { multiplyArrayOfNumbers } from "../Day2/Day2";
 
 export const getSymbolPositionsOnLine = (line: string, row) => {
   return line

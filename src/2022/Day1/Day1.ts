@@ -1,7 +1,5 @@
+import { sumArrayOfNumbers } from "../../helpers/reducers";
 import { Day } from "../../shared/day";
-
-export const sumArrayOfNumbers = (accumulator: number, currentValue: number) =>
-  accumulator + currentValue;
 
 export const calculateTotalCaloriesForAllElves = (array: string[]) => {
   let key = 0;
