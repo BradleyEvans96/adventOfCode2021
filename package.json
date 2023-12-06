@@ -5,6 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "solve": "ts-node src/main.ts",
+    "create-files": "ts-node src/createDayFiles.ts",
     "test": "jest"
   },
   "author": "bradleyEvans",
