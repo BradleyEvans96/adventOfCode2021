@@ -1,4 +1,4 @@
-export const dayNumber = 1;
+export const dayNumber = 8;
 export const yearNumber = 2023;
 
 export const typescriptTemplate = `
