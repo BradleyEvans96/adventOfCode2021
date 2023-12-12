@@ -1,3 +1,4 @@
+import { splitLinesIntoChars } from "../../helpers";
 import { Day } from "../../shared/day";
 
 const Pipes = {
@@ -90,10 +91,6 @@ const getNextCoordinate = ({ x, y }: Coordinate, from: string): PipeDetails => {
   }
   // check this coordinate
   // find out direction of pipe and pass onto the next coordinate
-};
-
-const splitLinesIntoChars = (input: string) => {
-  return input.split("");
 };
 
 const getLengthOfPath = (pipeMap: string[][], startingPipe: PipeDetails) => {

@@ -21,15 +21,15 @@ async function solveForDay(dayNumber: number): Promise<void> {
     `./${yearNumber}/Day${dayNumber}/Day${dayNumber}`
   );
 
-  const partOneExampleAnswer = day.solvePartOne(testinput);
-  console.log(`Part 1 Example: ${partOneExampleAnswer}`);
+  // const partOneExampleAnswer = day.solvePartOne(testinput);
+  // console.log(`Part 1 Example: ${partOneExampleAnswer}`);
 
   // const partOneAnswer = day.solvePartOne(input);
   // console.log(`Part 1 Actual: ${partOneAnswer}`);
 
-  // const partTwoExampleAnswer = day.solvePartTwo(testinput);
-  // console.log(`Part 2 Example: ${partTwoExampleAnswer}`);
+  const partTwoExampleAnswer = day.solvePartTwo(testinput);
+  console.log(`Part 2 Example: ${partTwoExampleAnswer}`);
 
-  // const partTwoAnswer = day.solvePartTwo(input);
-  // console.log(`Part 2 Actual: ${partTwoAnswer}`);
+  const partTwoAnswer = day.solvePartTwo(input);
+  console.log(`Part 2 Actual: ${partTwoAnswer}`);
 }
